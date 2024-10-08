@@ -2,6 +2,9 @@
 
 # Submit your PR on this new repo [Hacktoberfest](https://github.com/fineanmol/hacktoberfest). I will merging all PRs there.
 
+The website this repo is working on is here:
+https://cocomantis.github.io/Hacktoberfest2024/Website/HomePage.html#puppies
+
 **This is a beginner-friendly project to help you get started with your [Hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below and read the contribution rules. Happy Learning <3 💙 !!**
 
 P.S. Star ⭐ and share this repository if you had fun!! 😍
