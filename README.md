@@ -32,9 +32,10 @@ Hacktoberfest 2024
 
 - Fork this repo (button on top)
 - Clone it on your local machine
+- Star this repo
 
 ```terminal
-git clone https://github.com/fineanmol/Hacktoberfest2024.git
+git clone https://github.com/cocomantis/Hacktoberfest2024.git
 ```
 
 - Navigate to the project directory.
