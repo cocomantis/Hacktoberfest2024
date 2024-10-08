@@ -98,7 +98,7 @@
       display: block;
     }
 
-    
+    /* Smooth animation when scrolling */
     html {
       scroll-behavior: smooth;
     }
@@ -128,12 +128,12 @@
     <h2>Adorable Kittens</h2>
     <div class="contributor-grid">
       <div class="contributor">
-        <img src="https://unsplash.com/images/animals/kitten" alt="Kitten">
+        <img src="https://placekitten.com/400/300" alt="Kitten">
         <a href="https://www.example.com/kittens">Learn More About Kittens</a>
       </div>
       <div class="contributor">
         <img src="https://placekitten.com/401/300" alt="Kitten">
-        <a href="https://unsplash.com/s/photos/cute-kitten">Cute Kitten Gallery</a>
+        <a href="https://www.example.com/kittens">Cute Kitten Gallery</a>
       </div>
     </div>
   </section>
@@ -156,28 +156,28 @@
   <!-- JavaScript to dynamically load contributors -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      
+      // Fetch the contributor list JSON file
       fetch('Contributor_list.json')
         .then(response => response.json())
         .then(data => {
           const contributorGrid = document.getElementById('contributor-grid');
 
-          
+          // Loop through each contributor in the JSON and create HTML
           data.forEach(contributor => {
             const contributorElement = document.createElement('div');
             contributorElement.className = 'contributor';
 
-            
+            // Placeholder image for each contributor
             const randomKittenImage = `https://placekitten.com/${Math.floor(Math.random() * 100 + 300)}/200`;
 
-           
+            // Create the HTML content
             contributorElement.innerHTML = `
               <img src="${randomKittenImage}" alt="Contributor Avatar">
               <a href="#">${contributor.name}</a>
               <p>${contributor.action}</p>
             `;
 
-            
+            // Append the new contributor to the grid
             contributorGrid.appendChild(contributorElement);
           });
         })
@@ -186,4 +186,3 @@
   </script>
 </body>
 </html>
-
