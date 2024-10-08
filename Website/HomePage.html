@@ -120,6 +120,7 @@
     <h2>Hacktoberfest Contributors</h2>
     <div class="contributor-grid" id="contributor-grid">
       <!-- Contributors will be dynamically injected here by JavaScript -->
+      
     </div>
   </section>
 
@@ -157,7 +158,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Fetch the contributor list JSON file
-      fetch('Contributor_list.json')
+      fetch('Website/Contributor_list.json')
         .then(response => response.json())
         .then(data => {
           const contributorGrid = document.getElementById('contributor-grid');
