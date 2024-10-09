@@ -158,20 +158,11 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Fetch the contributor list JSON file
-      fetch('Contributor_list.json')
+      fetch('./Contributor_list.json')
         .then(response => response.json())
         .then(data => {
           const contributorGrid = document.getElementById('contributor-grid');
 
-          data =>
-  {
-    "name": "Ridhima",
-    "action": "Created the website"
-  },
-{
-    "name": "Dhruva Bisht",
-    "action": "Resolved the contributors list issue on the website"
-  }
           // Loop through each contributor in the JSON and create HTML
           data.forEach(contributor => {
             const contributorElement = document.createElement('div');
