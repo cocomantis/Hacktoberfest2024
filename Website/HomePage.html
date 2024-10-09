@@ -4,114 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hacktoberfest Contributors</title>
-  <style>
-    /* Basic reset and smooth scrolling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f8ff;
-    }
-
-    /* Navbar styling */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #007acc;
-      padding: 10px 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      margin: 0 20px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ffd700;
-    }
-
-    /* Section styling */
-    section {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 36px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .contributor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .contributor {
-      background-color: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .contributor:hover {
-      transform: scale(1.05);
-    }
-
-    .contributor img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .contributor a {
-      text-decoration: none;
-      color: #007acc;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-      display: block;
-    }
-
-    /* Smooth animation when scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <link rel="stylesheet" href="./HomePage.css">
 </head>
 <body>
 
   <!-- Navbar -->
   <nav>
-    <ul>
-      <li><a href="#contributors">Contributors</a></li>
-      <li><a href="#kittens">Kittens</a></li>
-      <li><a href="#puppies">Puppies</a></li>
+    <ul class="nav-links">
+      <li><a href="#">Dashboard</a></li>
+      <li class="center"><a href="#contributors">Contributors</a></li>
+      <li class="upward"><a href="#kittens">Kittens</a></li>
+      <li class="forward"><a href="#puppies">Puppies</a></li>
     </ul>
   </nav>
 
@@ -152,6 +55,9 @@
         <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
       </div>
     </div>
+    <footer>
+      <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+  </footer>
   </section>
 
   <!-- JavaScript to dynamically load contributors -->
@@ -184,6 +90,7 @@
         })
         .catch(error => console.error('Error loading contributors:', error));
     });
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
