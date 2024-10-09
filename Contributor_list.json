@@ -1,5 +1,22 @@
-  {
-    "name": "Ridhima",
-    "action": "Created the website"
-  }
-
+[
+    {
+        "name": "Alice Johnson",
+        "action": "Submitted a bug fix"
+    },
+    {
+        "name": "Bob Smith",
+        "action": "Improved documentation"
+    },
+    {
+        "name": "Charlie Davis",
+        "action": "Added a new feature"
+    },
+    {
+        "name": "Dana Lee",
+        "action": "Refactored code"
+    },
+    {
+        "name": "Eva Green",
+        "action": "Conducted code reviews"
+    }
+]
