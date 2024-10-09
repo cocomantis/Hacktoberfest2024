@@ -1,22 +1,10 @@
 [
     {
-        "name": "Alice Johnson",
-        "action": "Submitted a bug fix"
+        "name": "Ridhima",
+        "action": "Created the website"
     },
     {
-        "name": "Bob Smith",
-        "action": "Improved documentation"
-    },
-    {
-        "name": "Charlie Davis",
-        "action": "Added a new feature"
-    },
-    {
-        "name": "Dana Lee",
-        "action": "Refactored code"
-    },
-    {
-        "name": "Eva Green",
-        "action": "Conducted code reviews"
+        "name": "Dhruva Bisht",
+        "action": "Removed a bug from the website to allow contributor list to be displayed."
     }
 ]
