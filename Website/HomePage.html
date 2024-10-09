@@ -169,11 +169,11 @@
             contributorElement.className = 'contributor';
 
             // Placeholder image for each contributor
-            const randomKittenImage = `https://placekitten.com/${Math.floor(Math.random() * 100 + 300)}/200`;
+            const contributorImg = `https://i.pravatar.cc/150${Math.floor(Math.random() * 100 + 300)}/200`;
 
             // Create the HTML content
             contributorElement.innerHTML = `
-              <img src="${randomKittenImage}" alt="Contributor Avatar">
+              <img src="${contributorImg}" alt="Contributor Avatar">
               <a href="#">${contributor.name}</a>
               <p>${contributor.action}</p>
             `;
