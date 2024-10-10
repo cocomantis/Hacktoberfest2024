@@ -15,7 +15,13 @@
       <li class="center"><a href="#contributors">Contributors</a></li>
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
+      <li class="auth"><a href="./login.html">Login</a></li> <!-- Added Login Link -->
     </ul>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+      🌙/☀️
+    </button>
   </nav>
 
   <!-- Contributors Section -->
@@ -23,7 +29,6 @@
     <h2>Hacktoberfest Contributors</h2>
     <div class="contributor-grid" id="contributor-grid">
       <!-- Contributors will be dynamically injected here by JavaScript -->
-      
     </div>
   </section>
 
@@ -55,14 +60,15 @@
         <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
       </div>
     </div>
-    <footer>
-      <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
-  </footer>
   </section>
 
-  <!-- JavaScript to dynamically load contributors -->
+  <footer>
+    <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Contributors and Dark Mode -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Fetch the contributor list JSON file
       fetch('./Contributor_list.json')
         .then(response => response.json())
@@ -88,8 +94,20 @@
             contributorGrid.appendChild(contributorElement);
           });
         });
+
+      // Set year in the footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const body = document.body;
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        darkModeToggle.textContent = isDarkMode ? '☀️ Light' : '🌙 Dark';
+      });
     });
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
