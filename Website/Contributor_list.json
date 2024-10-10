@@ -6,5 +6,9 @@
     {
         "name": "Dhruva Bisht",
         "action": "Removed a bug from the website to allow contributor list to be displayed."
+    },
+    {
+        "name":"Bhumit Gupta",
+        "action":"Added New Navbar, Footer and changed the background of the website"
     }
 ]
