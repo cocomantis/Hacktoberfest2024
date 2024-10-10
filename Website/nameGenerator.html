@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Your Pets</title>
+    <link rel="stylesheet" href="./HomePage.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="page.html">Dashboard</a></li>
+            <li class="center"><a href="#contributors">Contributors</a></li>
+            <li class="upward"><a href="#kittens">Kittens</a></li>
+            <li class="forward"><a href="#puppies">Puppies</a></li>
+            <li class="forward"><a href="name your pets.html">Name Your Pet</a></li> <!-- Link to the new page -->
+        </ul>
+    </nav>
+
+    <section id="name-your-pet">
+        <h2>Generate a Random Pet Name</h2>
+        <form id="pet-name-form">
+            <label for="first-name">Your First Name:</label>
+            <input type="text" id="first-name" required>
+
+            <label for="last-name">Your Last Name:</label>
+            <input type="text" id="last-name" required>
+
+            <label for="animal-category">Category of Animal:</label>
+            <input type="text" id="animal-category" required>
+
+            <label for="fur-color">Color of Fur:</label>
+            <input type="text" id="fur-color" required>
+
+            <label for="favorite-fruit">Your Favorite Fruit:</label>
+            <input type="text" id="favorite-fruit" required>
+
+            <button type="submit">Generate Name</button>
+        </form>
+
+        <h3 id="generated-name"></h3>
+    </section>
+
+    <footer>
+        <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('pet-name-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get user inputs
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const animalCategory = document.getElementById('animal-category').value;
+            const furColor = document.getElementById('fur-color').value;
+            const favoriteFruit = document.getElementById('favorite-fruit').value;
+
+            // Generate the pet name
+            const petName = `${animalCategory} ${furColor} ${firstName} ${favoriteFruit} ${lastName}`;
+            
+            // Display the generated name
+            document.getElementById('generated-name').textContent = `Your Pet Name: ${petName}`;
+        });
+
+        // Update the footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
