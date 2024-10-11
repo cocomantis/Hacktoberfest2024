@@ -129,20 +129,7 @@
     <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
   </footer>
 
-  <!-- Google Login Logic -->
-  <script>
-    function onSignIn(googleUser) {
-      // Get user profile information
-      var profile = googleUser.getBasicProfile();
-      var firstName = profile.getGivenName();
-      
-      // Display the user's first name in the navbar
-      document.getElementById('user-name').innerHTML = `Welcome, ${firstName}`;
-      
-      // Hide the Google login button after successful login
-      document.getElementById('g-signin2').style.display = 'none';
-    }
-  </script>
+
 
   <!-- Facebook Login Logic -->
   <script>
