@@ -12,6 +12,59 @@
 
   <!-- Facebook SDK -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  
+  <style>
+    /* Ensure navbar elements are styled properly */
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .nav-links li {
+      float: left;
+      margin-right: 15px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 16px;
+      display: block;
+    }
+
+    .nav-links li a:hover {
+      background-color: #575757;
+    }
+
+    /* Ensure login buttons are visible and aligned properly */
+    #login-buttons {
+      float: right;
+    }
+
+    #login-buttons button, #g-signin2 {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin-right: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #login-buttons button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,11 +76,11 @@
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
       <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
-      
+
       <!-- Login buttons (Google and Facebook) -->
-      <li style="float: right;">
-        <div id="g-signin2" style="display: inline-block;"></div> <!-- Google login button -->
-        <button onclick="fbLogin()" style="display: inline-block;">Login with Facebook</button> <!-- Facebook login button -->
+      <li id="login-buttons">
+        <div id="g-signin2"></div> <!-- Google login button -->
+        <button onclick="fbLogin()">Login with Facebook</button> <!-- Facebook login button -->
       </li>
 
       <!-- Display logged-in user name -->
