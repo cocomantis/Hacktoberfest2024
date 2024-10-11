@@ -23,16 +23,17 @@
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
       <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
+      
+      <!-- Login buttons (Google and Facebook) -->
+      <li style="float: right;">
+        <div id="g-signin2" style="display: inline-block;"></div> <!-- Google login button -->
+        <button onclick="fbLogin()" style="display: inline-block;">Login with Facebook</button> <!-- Facebook login button -->
+      </li>
+
       <!-- Display logged-in user name -->
-      <li id="user-name" style="float: right;"></li>
+      <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
   </nav>
-
-  <!-- Login Buttons -->
-  <div style="text-align: right;">
-    <div id="g-signin2" style="display: inline-block;"></div>
-    <button onclick="fbLogin()" style="display: inline-block;">Login with Facebook</button>
-  </div>
 
   <!-- Contributors Section -->
   <section id="contributors">
@@ -70,10 +71,11 @@
         <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
       </div>
     </div>
-    <footer>
-      <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
-    </footer>
   </section>
+
+  <footer>
+    <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+  </footer>
 
   <!-- Google Login Logic -->
   <script>
