@@ -15,7 +15,10 @@
       <li class="center"><a href="#contributors">Contributors</a></li>
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
-      <li class="auth"><a href="./login.html">Login</a></li> <!-- Added Login Link -->
+< main
+      <li class="auth"><a href="./login.html">Login</a></li> <!-- Login Page Working -->
+      <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
+> main
     </ul>
 
     <!-- Dark Mode Toggle -->
@@ -80,15 +83,53 @@
             const contributorElement = document.createElement('div');
             contributorElement.className = 'contributor';
 
+            // Retrieving github url
+            const githubUrl = contributor.github_url;
+            
+            // Extract the username from the URL using regular expression
+            const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
+
+            if (username) {
+              // Fetch user data from GitHub API
+              fetch(`https://api.github.com/users/${username}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      // Check if a valid user is found
+                      if (data && data.avatar_url) {
+                          // Display the avatar
+                          const avatar_img = data.avatar_url;
+
+                          console.log(avatar_img);
+                          contributorElement.innerHTML = `
+                            <img src="${avatar_img}" alt="Contributor Avatar">
+                            <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
+                            <br>
+                            <p>${contributor.action}</p>
+                            `;
+                      } else {
+                          console.log("User not found!");
+                      }
+                  })
+                  .catch(error => {
+                      console.error(error);
+                  });
+              } else {
+                  console.log("Invalid GitHub URL!");
+              }
+            
+
+
             // Placeholder image for each contributor
-            const contributorImg = `https://i.pravatar.cc/150${Math.floor(Math.random() * 100 + 300)}/200`;
+            // const contributorImg = `https://i.pravatar.cc/150${Math.floor(Math.random() * 100 + 300)}/200`;
 
             // Create the HTML content
-            contributorElement.innerHTML = `
-              <img src="${contributorImg}" alt="Contributor Avatar">
-              <a href="#">${contributor.name}</a>
-              <p>${contributor.action}</p>
-            `;
+            
+            // contributorElement.innerHTML = `
+            //   <img src="${contributorImg}" alt="Contributor Avatar">
+            //   <a href="#">${contributor.name}</a>
+            //   <p>${contributor.action}</p>
+            // `;
+
 
             // Append the new contributor to the grid
             contributorGrid.appendChild(contributorElement);

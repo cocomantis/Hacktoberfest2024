@@ -1,10 +1,22 @@
 [
     {
         "name": "Ridhima",
-        "action": "Created the website"
+        "action": "Created the website",
+        "github_url": "https://github.com/cocomantis"
     },
     {
         "name": "Dhruva Bisht",
-        "action": "Removed a bug from the website to allow contributor list to be displayed."
+        "action": "Removed a bug from the website to allow contributor list to be displayed.",
+        "github_url": "https://github.com/dhruvabisht"
+    },
+    {
+        "name":"Bhumit Gupta",
+        "action":"Added New Navbar, Footer and changed the background of the website",
+        "github_url": "https://github.com/Bhumitg07205"
+    },
+    {
+        "name":"Aditya Sinha",
+        "action":"Added Github Profile to each contributor, updated random pet generation name and fixed the link in contributor's page",
+        "github_url": "https://github.com/AdityaSinha2305"
     }
 ]
