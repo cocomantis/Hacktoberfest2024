@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hamburger Menu Toggle
-    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const hamburger = document.getElementById('hamburger-menu');
     const navLinks = document.getElementById('nav-links');
   
-    hamburgerMenu.addEventListener('click', function() {
-      navLinks.classList.toggle('show');
-      hamburgerMenu.classList.toggle('active');
+    hamburger.addEventListener('click', function() {
+      navLinks.classList.toggle('nav-active');
+      hamburger.classList.toggle('toggle');
     });
+
+  
   
     // Fetch the contributor list JSON file
     fetch('./Contributor_list.json')
@@ -59,5 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Set the current year in the footer
     document.getElementById('year').textContent = new Date().getFullYear();
-  });
+});
   
