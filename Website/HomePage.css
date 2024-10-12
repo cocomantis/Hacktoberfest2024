@@ -16,7 +16,6 @@ body {
   height: 100vh;
 }
 
-
 nav {
   justify-content: center;
   align-items: center;
@@ -74,15 +73,64 @@ nav {
   width: 100%;
 }
 
-section {
-  padding: 80px 0;
-  text-align: center;
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
 }
 
-h2 {
-  font-size: 36px;
-  color: white;
-  margin-bottom: 20px;
+.hamburger-menu span {
+  background-color: white;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    flex-direction: column;
+    background-color: #8E44AD;
+    width: 200px;
+    height: 100vh;
+    padding: 60px 20px;
+    transition: right 0.3s ease;
+  }
+
+  /* Show hamburger icon for smaller screens */
+  .hamburger-menu {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1001;
+  }
+
+  /* Show the menu when active */
+  .nav-active {
+    right: 0;
+  }
+
+  /* Change the hamburger to an "X" when clicked */
+  .hamburger-menu.toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger-menu.toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 }
 
 .contributor-grid {
@@ -123,46 +171,15 @@ h2 {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 768px) {
-  /* Navbar */
-  .nav-links {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-
-  .contributor-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 10px;
-  }
-
-  
-  section {
-    padding: 50px 20px;
-  }
-
-  
-  h2 {
-    font-size: 28px;
-  }
-}
-
 @media (max-width: 480px) {
-  /* Navbar */
+  /* Hamburger menu and other styles are already managed */
   .nav-links {
-    flex-direction: column;
-    padding: 8px;
+    padding: 10px;
   }
 
   .nav-links li {
     margin: 8px 0;
   }
-
 
   .contributor-grid {
     grid-template-columns: 1fr;
@@ -170,16 +187,13 @@ h2 {
     padding: 5px;
   }
 
-  
   section {
     padding: 40px 15px;
   }
 
- 
   h2 {
     font-size: 24px;
   }
-
 
   .contributor img {
     height: 150px;
