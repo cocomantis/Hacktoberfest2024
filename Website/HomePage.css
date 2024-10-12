@@ -228,6 +228,7 @@ button:hover {
 
 #generated-name {
   background-color: #a51eed;
+  visibility: hidden;
   border-radius: 25px;
   padding: 25px; 
   margin-left: 530px;
