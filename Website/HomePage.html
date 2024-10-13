@@ -5,6 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hacktoberfest Contributors</title>
   <link rel="stylesheet" href="./HomePage.css">
+  
+  <!-- Google API for Google Sign-In -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
+
+  <!-- Facebook SDK -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  
+  <style>
+    /* Ensure navbar elements are styled properly */
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .nav-links li {
+      float: left;
+      margin-right: 15px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 16px;
+      display: block;
+    }
+
+    .nav-links li a:hover {
+      background-color: #575757;
+    }
+
+    /* Ensure login buttons are visible and aligned properly */
+    #login-buttons {
+      float: right;
+    }
+
+    #login-buttons button, #g-signin2 {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin-right: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #login-buttons button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,6 +76,14 @@
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
       <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
+
+      <!-- Login buttons (Google and Facebook) -->
+      <li id="login-buttons">
+        <button onclick="fbLogin()">Login with Facebook</button> <!-- Facebook login button -->
+      </li>
+
+      <!-- Display logged-in user name -->
+      <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
   </nav>
 
@@ -24,7 +92,6 @@
     <h2>Hacktoberfest Contributors</h2>
     <div class="contributor-grid" id="contributor-grid">
       <!-- Contributors will be dynamically injected here by JavaScript -->
-      
     </div>
   </section>
 
@@ -56,74 +123,78 @@
         <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
       </div>
     </div>
-    <footer>
-      <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
-  </footer>
   </section>
 
-  <!-- JavaScript to dynamically load contributors -->
+  <footer>
+    <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+  </footer>
+
+
+
+  <!-- Facebook Login Logic -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '564187956294759',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v16.0'
+      });
+
+      FB.AppEvents.logPageView();   
+    };
+
+    function fbLogin() {
+      FB.login(function(response) {
+        if (response.status === 'connected') {
+          // Logged into your webpage and Facebook.
+          FB.api('/me', { fields: 'first_name' }, function(response) {
+            var firstName = response.first_name;
+
+            // Display the user's first name in the navbar
+            document.getElementById('user-name').innerHTML = `Welcome, ${firstName}`;
+            
+            // Hide the Facebook login button after successful login
+            document.querySelector('button[onclick="fbLogin()"]').style.display = 'none';
+          });
+        } else {
+          console.log('User cancelled login or did not fully authorize.');
+        }
+      });
+    }
+  </script>
+
+  <!-- Load contributors dynamically -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Fetch the contributor list JSON file
       fetch('./Contributor_list.json')
         .then(response => response.json())
         .then(data => {
           const contributorGrid = document.getElementById('contributor-grid');
 
-          // Loop through each contributor in the JSON and create HTML
           data.forEach(contributor => {
             const contributorElement = document.createElement('div');
             contributorElement.className = 'contributor';
-
-            // Retrieving github url
-            const githubUrl = contributor.github_url;
             
-            // Extract the username from the URL using regular expression
+            const githubUrl = contributor.github_url;
             const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
 
             if (username) {
-              // Fetch user data from GitHub API
               fetch(`https://api.github.com/users/${username}`)
-                  .then(response => response.json())
-                  .then(data => {
-                      // Check if a valid user is found
-                      if (data && data.avatar_url) {
-                          // Display the avatar
-                          const avatar_img = data.avatar_url;
+                .then(response => response.json())
+                .then(data => {
+                  if (data && data.avatar_url) {
+                    const avatar_img = data.avatar_url;
+                    contributorElement.innerHTML = `
+                      <img src="${avatar_img}" alt="Contributor Avatar">
+                      <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
+                      <br>
+                      <p>${contributor.action}</p>
+                    `;
+                  }
+                });
+            }
 
-                          console.log(avatar_img);
-                          contributorElement.innerHTML = `
-                            <img src="${avatar_img}" alt="Contributor Avatar">
-                            <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
-                            <br>
-                            <p>${contributor.action}</p>
-                            `;
-                      } else {
-                          console.log("User not found!");
-                      }
-                  })
-                  .catch(error => {
-                      console.error(error);
-                  });
-              } else {
-                  console.log("Invalid GitHub URL!");
-              }
-            
-
-
-            // Placeholder image for each contributor
-            // const contributorImg = `https://i.pravatar.cc/150${Math.floor(Math.random() * 100 + 300)}/200`;
-
-            // Create the HTML content
-            
-            // contributorElement.innerHTML = `
-            //   <img src="${contributorImg}" alt="Contributor Avatar">
-            //   <a href="#">${contributor.name}</a>
-            //   <p>${contributor.action}</p>
-            // `;
-
-
-            // Append the new contributor to the grid
             contributorGrid.appendChild(contributorElement);
           });
         });
