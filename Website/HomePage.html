@@ -64,6 +64,45 @@
     #login-buttons button:hover {
       background-color: #45a049;
     }
+
+    /* Contributor grid and hover effect */
+    .contributor-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .contributor {
+      width: 200px;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .contributor:hover {
+      transform: translateY(-15px);  /* Float up effect */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow */
+    }
+
+    .contributor img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .contributor a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .contributor a:hover {
+      color: #007BFF;
+    }
   </style>
 </head>
 <body>
@@ -129,13 +168,11 @@
     <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
   </footer>
 
-
-
   <!-- Facebook Login Logic -->
   <script>
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '564187956294759',
+        appId      : 'YOUR_FACEBOOK_APP_ID',
         cookie     : true,
         xfbml      : true,
         version    : 'v16.0'
