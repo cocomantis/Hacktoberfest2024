@@ -13,7 +13,7 @@ body {
   color: white;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; 
 }
 
 
@@ -188,4 +188,50 @@ h2 {
   .contributor a {
     font-size: 16px;
   }
+}
+
+
+
+#pet-name-form {
+  background-color: #ed6d1e;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px; 
+  margin-left: 530px;
+  max-width: 450px; 
+  width: 100%;              /* Responsive width */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+button {
+  width: 100%;
+  font-size: medium;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#generated-name {
+  background-color: #a51eed;
+  visibility: hidden;
+  border-radius: 25px;
+  padding: 25px; 
+  margin-left: 530px;
+  max-width: 450px; 
+  width: 100%;  /* Responsive width */
 }
