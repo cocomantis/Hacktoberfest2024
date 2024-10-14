@@ -1,242 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hacktoberfest Contributors</title>
-  <link rel="stylesheet" href="./HomePage.css">
-  
-  <!-- Google API for Google Sign-In -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacktoberfest Contributors</title>
+    <link rel="stylesheet" href="./HomePage.css" />
 
-  <!-- Facebook SDK -->
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-  
-  <style>
-    /* Ensure navbar elements are styled properly */
-    nav {
-      background-color: #333;
-      padding: 10px;
-    }
+    <!-- Google API for Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta
+      name="google-signin-client_id"
+      content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+    />
 
-    .nav-links {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
+    <!-- Facebook SDK -->
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
 
-    .nav-links li {
-      float: left;
-      margin-right: 15px;
-    }
+    <style>
+      /* Ensure navbar elements are styled properly */
+      nav {
+        background-color: #333;
+        padding: 0px;
+        justify-content: space-between; /* Aligns links and buttons properly */
+        align-items: center; /* Centers items vertically */
+        width: 100%; /* Ensure the nav takes full width, not 100vw to avoid overflow */
+      }
 
-    .nav-links li a {
-      color: white;
-      text-decoration: none;
-      padding: 14px 16px;
-      display: block;
-    }
+      .nav-links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
 
-    .nav-links li a:hover {
-      background-color: #575757;
-    }
+      .nav-links li {
+        float: left;
+        margin-right: 15px;
+      }
 
-    /* Ensure login buttons are visible and aligned properly */
-    #login-buttons {
-      float: right;
-    }
+      .nav-links li a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 16px;
+        display: block;
+      }
 
-    #login-buttons button, #g-signin2 {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      margin-right: 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      cursor: pointer;
-    }
+      .nav-links li a:hover {
+        background-color: #575757;
+      }
 
-    #login-buttons button:hover {
-      background-color: #45a049;
-    }
+      /* Ensure login buttons are visible and aligned properly */
+      #login-buttons {
+        float: right;
+      }
 
-    /* Contributor grid and hover effect */
-    .contributor-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+      #login-buttons button,
+      #g-signin2 {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-    .contributor {
-      width: 200px;
-      text-align: center;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
+      #login-buttons button:hover {
+        background-color: #45a049;
+      }
 
-    .contributor:hover {
-      transform: translateY(-15px);  /* Float up effect */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow */
-    }
+      /* Contributor grid and hover effect */
+      .contributor-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
 
-    .contributor img {
-      width: 100%;
-      border-radius: 50%;
-    }
+      .contributor {
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
 
-    .contributor a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
+      .contributor:hover {
+        transform: translateY(-15px); /* Float up effect */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow */
+      }
 
-    .contributor a:hover {
-      color: #007BFF;
-    }
-  </style>
-</head>
-<body>
+      .contributor img {
+        width: 100%;
+        border-radius: 50%;
+      }
 
-  <!-- Navbar -->
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#">Dashboard</a></li>
-      <li class="center"><a href="#contributors">Contributors</a></li>
-      <li class="upward"><a href="#kittens">Kittens</a></li>
-      <li class="forward"><a href="#puppies">Puppies</a></li>
-      <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
+      .contributor a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
 
-      <!-- Login buttons (Google and Facebook) -->
-      <li id="login-buttons">
-        <button onclick="fbLogin()">Login with Facebook</button> <!-- Facebook login button -->
-      </li>
+      .contributor a:hover {
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Dashboard</a></li>
+        <li class="center"><a href="#contributors">Contributors</a></li>
+        <li class="upward"><a href="#kittens">Kittens</a></li>
+        <li class="forward"><a href="#puppies">Puppies</a></li>
+        <li class="forward">
+          <a href="./nameGenerator.html">Name Your Pet</a>
+        </li>
 
-      <!-- Display logged-in user name -->
-      <li id="user-name" style="float: right; margin-right: 20px;"></li>
-    </ul>
-  </nav>
+        <!-- Login buttons (Google and Facebook) -->
+        <li id="login-buttons">
+          <button onclick="fbLogin()">Login with Facebook</button>
+          <!-- Facebook login button -->
+        </li>
 
-  <!-- Contributors Section -->
-  <section id="contributors">
-    <h2>Hacktoberfest Contributors</h2>
-    <div class="contributor-grid" id="contributor-grid">
-      <!-- Contributors will be dynamically injected here by JavaScript -->
-    </div>
-  </section>
+        <!-- Display logged-in user name -->
+        <li id="user-name" style="float: right; margin-right: 20px"></li>
+      </ul>
+    </nav>
 
-  <!-- Kittens Section -->
-  <section id="kittens">
-    <h2>Adorable Kittens</h2>
-    <div class="contributor-grid">
-      <div class="contributor">
-        <img src="https://shorturl.at/FYbUg" alt="Kitten">
-        <a href="https://www.dspca.ie/kitten-season/">Learn More About Kittens</a>
+    <!-- Contributors Section -->
+    <section id="contributors">
+      <h2>Hacktoberfest Contributors</h2>
+      <div class="contributor-grid" id="contributor-grid">
+        <!-- Contributors will be dynamically injected here by JavaScript -->
       </div>
-      <div class="contributor">
-        <img src="https://shorturl.at/NLjcO" alt="Kitten">
-        <a href="https://www.adverts.ie/results/kittens">Cute Kitten Gallery</a>
+    </section>
+
+    <!-- Kittens Section -->
+    <section id="kittens">
+      <h2>Adorable Kittens</h2>
+      <div class="contributor-grid">
+        <div class="contributor">
+          <img src="https://shorturl.at/FYbUg" alt="Kitten" />
+          <a href="https://www.dspca.ie/kitten-season/"
+            >Learn More About Kittens</a
+          >
+        </div>
+        <div class="contributor">
+          <img src="https://shorturl.at/NLjcO" alt="Kitten" />
+          <a href="https://www.adverts.ie/results/kittens"
+            >Cute Kitten Gallery</a
+          >
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Puppies Section -->
-  <section id="puppies">
-    <h2>Cute Puppies</h2>
-    <div class="contributor-grid">
-      <div class="contributor">
-        <img src="https://placedog.net/400/300" alt="Puppy">
-        <a href="https://dogs.ie/">Meet the Puppies</a>
+    <!-- Puppies Section -->
+    <section id="puppies">
+      <h2>Cute Puppies</h2>
+      <div class="contributor-grid">
+        <div class="contributor">
+          <img src="https://placedog.net/400/300" alt="Puppy" />
+          <a href="https://dogs.ie/">Meet the Puppies</a>
+        </div>
+        <div class="contributor">
+          <img src="https://placedog.net/401/300" alt="Puppy" />
+          <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
+        </div>
       </div>
-      <div class="contributor">
-        <img src="https://placedog.net/401/300" alt="Puppy">
-        <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
-  </footer>
+    <footer>
+      <p>&copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
+    </footer>
 
-  <!-- Facebook Login Logic -->
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : 'YOUR_FACEBOOK_APP_ID',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v16.0'
-      });
+    <!-- Facebook Login Logic -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "YOUR_FACEBOOK_APP_ID",
+          cookie: true,
+          xfbml: true,
+          version: "v16.0",
+        });
 
-      FB.AppEvents.logPageView();   
-    };
+        FB.AppEvents.logPageView();
+      };
 
-    function fbLogin() {
-      FB.login(function(response) {
-        if (response.status === 'connected') {
-          // Logged into your webpage and Facebook.
-          FB.api('/me', { fields: 'first_name' }, function(response) {
-            var firstName = response.first_name;
+      function fbLogin() {
+        FB.login(function (response) {
+          if (response.status === "connected") {
+            // Logged into your webpage and Facebook.
+            FB.api("/me", { fields: "first_name" }, function (response) {
+              var firstName = response.first_name;
 
-            // Display the user's first name in the navbar
-            document.getElementById('user-name').innerHTML = `Welcome, ${firstName}`;
-            
-            // Hide the Facebook login button after successful login
-            document.querySelector('button[onclick="fbLogin()"]').style.display = 'none';
-          });
-        } else {
-          console.log('User cancelled login or did not fully authorize.');
-        }
-      });
-    }
-  </script>
+              // Display the user's first name in the navbar
+              document.getElementById(
+                "user-name"
+              ).innerHTML = `Welcome, ${firstName}`;
 
-  <!-- Load contributors dynamically -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('./Contributor_list.json')
-        .then(response => response.json())
-        .then(data => {
-          const contributorGrid = document.getElementById('contributor-grid');
+              // Hide the Facebook login button after successful login
+              document.querySelector(
+                'button[onclick="fbLogin()"]'
+              ).style.display = "none";
+            });
+          } else {
+            console.log("User cancelled login or did not fully authorize.");
+          }
+        });
+      }
+    </script>
 
-          data.forEach(contributor => {
-            const contributorElement = document.createElement('div');
-            contributorElement.className = 'contributor';
-            
-            const githubUrl = contributor.github_url;
-            const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
+    <!-- Load contributors dynamically -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("./Contributor_list.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const contributorGrid = document.getElementById("contributor-grid");
 
-            if (username) {
-              fetch(`https://api.github.com/users/${username}`)
-                .then(response => response.json())
-                .then(data => {
-                  if (data && data.avatar_url) {
-                    const avatar_img = data.avatar_url;
-                    contributorElement.innerHTML = `
+            data.forEach((contributor) => {
+              const contributorElement = document.createElement("div");
+              contributorElement.className = "contributor";
+
+              const githubUrl = contributor.github_url;
+              const username = githubUrl.match(
+                /https:\/\/github\.com\/([^\/]+)/
+              )[1];
+
+              if (username) {
+                fetch(`https://api.github.com/users/${username}`)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    if (data && data.avatar_url) {
+                      const avatar_img = data.avatar_url;
+                      contributorElement.innerHTML = `
                       <img src="${avatar_img}" alt="Contributor Avatar">
                       <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
                       <br>
                       <p>${contributor.action}</p>
                     `;
-                  }
-                });
-            }
+                    }
+                  });
+              }
 
-            contributorGrid.appendChild(contributorElement);
+              contributorGrid.appendChild(contributorElement);
+            });
           });
-        });
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+      });
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
