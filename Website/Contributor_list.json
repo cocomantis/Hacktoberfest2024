@@ -18,5 +18,10 @@
         "name":"Aditya Sinha",
         "action":"Added Github Profile to each contributor, updated random pet generation name and fixed the link in contributor's page",
         "github_url": "https://github.com/AdityaSinha2305"
+    },
+    {
+        "name":"Austin Varshney",
+        "action":"Made the Proper Indentation of the Body and Improvements in the Form",
+        "github_url": "https://github.com/AustinVarshney"
     }
 ]
