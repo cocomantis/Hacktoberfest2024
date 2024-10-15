@@ -191,7 +191,9 @@ h2 {
 }
 
 
+/* Form styling starts */
 
+/* Form styling */
 #pet-name-form {
   background-color: #ed6d1e;
   border-radius: 25px;
@@ -202,6 +204,7 @@ h2 {
   width: 100%;              /* Responsive width */
 }
 
+/* Input area styling */
 input[type="text"] {
   width: 100%;
   padding: 8px;
@@ -211,6 +214,7 @@ input[type="text"] {
 }
 
 
+/* Button styling */
 button {
   width: 100%;
   font-size: medium;
@@ -237,46 +241,50 @@ button:hover {
 }
 
 
-<style>
-  /* Basic contributor grid styling */
-  .contributor-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
 
-  /* Contributor profile styling */
-  .contributor {
-    width: 200px;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
+/* Form styling ends */
 
-  /* Animation for hovering over the profile */
-  .contributor:hover {
-    transform: translateY(-15px);  /* Float up effect */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Increase shadow to enhance floating look */
-  }
 
-  /* Contributor images */
-  .contributor img {
-    width: 100%;
-    border-radius: 50%;
-  }
 
-  .contributor a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
+/* Basic contributor grid styling */
+.contributor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  .contributor a:hover {
-    color: #007BFF;
-  }
-</style>
+/* Contributor profile styling */
+.contributor {
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Animation for hovering over the profile */
+.contributor:hover {
+  transform: translateY(-15px);  /* Float up effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Increase shadow to enhance floating look */
+}
+
+/* Contributor images */
+.contributor img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.contributor a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.contributor a:hover {
+  color: #007BFF;
+}
+
