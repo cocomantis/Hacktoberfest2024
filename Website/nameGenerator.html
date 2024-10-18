@@ -1,141 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name Your Pets</title>
-    <link rel="stylesheet" href="./HomePage.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pet Name Generator</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e8f5e9; /* Light green background */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url(../../Hacktoberfest2024/Website/images.jpeg);
+    }
 
-    <style>
-        /* Style for the cloud */
-        .cloud {
-            position: absolute;
-            display: none;
-            width: 120px;
-            height: 80px;
-            background-color: #f0f0f0;
-            border-radius: 60px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0.8;
-            z-index: -1;
-            animation: float 4s infinite ease-in-out;
-        }
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
 
-        /* Additional cloud circles to make it fluffy */
-        .cloud:before, .cloud:after {
-            content: '';
-            position: absolute;
-            background-color: #f0f0f0;
-            z-index: -1;
-        }
+    h1 {
+      color: #2e7d32; /* Dark green */
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
 
-        .cloud:before {
-            width: 80px;
-            height: 80px;
-            top: -40px;
-            left: 15px;
-            border-radius: 50%;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
 
-        .cloud:after {
-            width: 60px;
-            height: 60px;
-            top: -30px;
-            right: 15px;
-            border-radius: 50%;
-        }
+    input, select {
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #a5d6a7; /* Light green border */
+      border-radius: 8px;
+      font-size: 1.1em;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-        /* Animation for the cloud to float up and down */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
+    button {
+      background-color: #388e3c; /* Medium green */
+      color: white;
+      padding: 14px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
 
-        /* Style for the Generate Name button */
-        button {
-            position: relative;
-            padding: 10px 20px;
-            font-size: 18px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    button:hover {
+      background-color: #8b3381; /* Darker green on hover */
+    }
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    /* Additional styles for generated name */
+    #generatedName {
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: #0c621d; /* Dark green */
+      font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      input, select, button {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="./HomePage.html">Dashboard</a></li>
-            <li class="center"><a href="./HomePage.html#contributors">Contributors</a></li>
-            <li class="upward"><a href="./HomePage.html#kittens">Kittens</a></li>
-            <li class="forward"><a href="./HomePage.html#puppies">Puppies</a></li>
-            <li class="forward"><a href="nameGenerator.html">Name Your Pet</a></li> <!-- Link to the new page -->
-        </ul>
-    </nav>
-
-    <section id="name-your-pet">
-        <h2>Generate a Random Pet Name</h2>
-        <form id="pet-name-form">
-
-            <!-- <label for="first-name">Your First Name:</label>
-
+  <div class="container">
+    <h1>Pet Name Generator</h1>
+    <form id="petNameForm">
+      <input type="text" id="firstName" name="firstName" placeholder="Your First Name" required>
+      <input type="text" id="lastName" name="lastName" placeholder="Your Last Name" required>
       
+      <select id="animalCategory" name="animalCategory" required>
+        <option value="" disabled selected>Category of Animal</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Bird">Bird</option>
+        <option value="Hamster">Hamster</option>
+        <option value="Parrot">Parrot</option>
+        <option value="Rabbit">Rabbit</option>
+      </select>
+      
+      <input type="text" id="furColor" name="furColor" placeholder="Color of Fur" required>
+      <input type="text" id="favoriteFood" name="favoriteFood" placeholder="Favorite Food" required>
 
-            <input type="text" id="first-name" required>
-            <br><br><br>
-            <label for="last-name">Your Last Name:</label>
-            <input type="text" id="last-name" required>
-            <br><br><br>
-            <label for="animal-category">Category of Animal:</label>
-            <input type="text" id="animal-category" required>
-            <br><br><br>
-            <label for="fur-color">Color of Fur:</label>
-            <input type="text" id="fur-color" required>
-            <br><br><br>
-            <label for="favorite-fruit">Favorite Food:</label>
-            <input type="text" id="favorite-fruit" required>
-
-            <br><br><br> -->
-        
-
-     
-
-            <button type="submit" id="generate-btn">Generate Name</button>
-            <div class="cloud" id="cloud"></div> <!-- Cloud element -->
->>>
-        </form>
-        
-
-        <br><br><br>
-        <h3 id="generated-name"></h3>
-    </section>
+      <button type="button" onclick="generatePetName()">Generate Pet Name</button>
+    </form>
+    
+    <p id="generatedName"></p>
+  </div>
 
     <script>
         document.getElementById('pet-name-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting
 
             // Get user inputs
-
-            // const firstName = document.getElementById('first-name').value;
-            // const lastName = document.getElementById('last-name').value;
-            // const animalCategory = document.getElementById('animal-category').value;
-            // const furColor = document.getElementById('fur-color').value;
-            // const favoriteFruit = document.getElementById('favorite-fruit').value;
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const animalCategory = document.getElementById('animal-category').value;
+            const furColor = document.getElementById('fur-color').value;
+            const favoriteFruit = document.getElementById('favorite-fruit').value;
 
             // Array of random pet names
             const petNames = ['Buddy', 'Charlie', 'Max', 'Bella', 'Milo', 'Luna', 'Daisy', 'Rocky', 'Chloe', 'Leo'];
@@ -171,8 +159,5 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <footer>
-        <p style="text-align: center;">&copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
-    </footer>
 </body>
 </html>
