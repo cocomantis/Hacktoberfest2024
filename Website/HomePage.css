@@ -152,14 +152,7 @@ h2 {
 /* Responsive Media Queries */
 @media (max-width: 768px) {
   /* Navbar */
-  .nav-links {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-  }
+  
 
   body{
     padding-top: 236px;
@@ -185,14 +178,7 @@ h2 {
 
 @media (max-width: 480px) {
   /* Navbar */
-  .nav-links {
-    flex-direction: column;
-    padding: 8px;
-  }
-
-  .nav-links li {
-    margin: 8px 0;
-  }
+  
 
 
   .contributor-grid {
@@ -308,7 +294,7 @@ button:hover {
 }
 
 
-<style>
+
   /* Basic contributor grid styling */
   .contributor-grid {
     display: flex;
@@ -350,5 +336,3 @@ button:hover {
   .contributor a:hover {
     color: #007BFF;
   }
-</style>
- main
