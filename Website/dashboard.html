@@ -124,6 +124,11 @@
       <!-- Display logged-in user name -->
       <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
+
+    <!-- Dark Mode Toggle
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+      🌙/☀️
+    </button> -->
   </nav>
 
   <!-- Contributors Section -->
@@ -168,6 +173,57 @@
     <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
   </footer>
 
+  <!-- JavaScript for Contributors and Dark Mode -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch the contributor list JSON file
+      fetch('./Contributor_list.json')
+        .then(response => response.json())
+        .then(data => {
+          const contributorGrid = document.getElementById('contributor-grid');
+
+          data.forEach(contributor => {
+            const contributorElement = document.createElement('div');
+            contributorElement.className = 'contributor';
+            
+            const githubUrl = contributor.github_url;
+            const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
+
+            if (username) {
+              fetch(`https://api.github.com/users/${username}`)
+                .then(response => response.json())
+                .then(data => {
+                  if (data && data.avatar_url) {
+                    const avatar_img = data.avatar_url;
+                    contributorElement.innerHTML = `
+                      <img src="${avatar_img}" alt="Contributor Avatar">
+                      <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
+                      <br>
+                      <p id="action">${contributor.action}</p>
+                    `;
+                  }
+                });
+            }
+
+            contributorGrid.appendChild(contributorElement);
+          });
+        });
+
+      // Set year in the footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const body = document.body;
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        darkModeToggle.textContent = isDarkMode ? '☀️  Light Mode' : '🌙  Dark Mode';
+      });
+    });
+  </script>
+
   <!-- Facebook Login Logic -->
   <script>
     window.fbAsyncInit = function() {
@@ -199,44 +255,6 @@
         }
       });
     }
-  </script>
-
-  <!-- Load contributors dynamically -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('./Contributor_list.json')
-        .then(response => response.json())
-        .then(data => {
-          const contributorGrid = document.getElementById('contributor-grid');
-
-          data.forEach(contributor => {
-            const contributorElement = document.createElement('div');
-            contributorElement.className = 'contributor';
-            
-            const githubUrl = contributor.github_url;
-            const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
-
-            if (username) {
-              fetch(`https://api.github.com/users/${username}`)
-                .then(response => response.json())
-                .then(data => {
-                  if (data && data.avatar_url) {
-                    const avatar_img = data.avatar_url;
-                    contributorElement.innerHTML = `
-                      <img src="${avatar_img}" alt="Contributor Avatar">
-                      <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
-                      <br>
-                      <p>${contributor.action}</p>
-                    `;
-                  }
-                });
-            }
-
-            contributorGrid.appendChild(contributorElement);
-          });
-        });
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
