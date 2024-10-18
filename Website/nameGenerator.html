@@ -113,22 +113,50 @@
     <p id="generatedName"></p>
   </div>
 
-  <script>
-    function generatePetName() {
-      const firstName = document.getElementById('firstName').value;
-      const lastName = document.getElementById('lastName').value;
-      const animalCategory = document.getElementById('animalCategory').value;
-      const furColor = document.getElementById('furColor').value;
-      const favoriteFood = document.getElementById('favoriteFood').value;
+    <script>
+        document.getElementById('pet-name-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
 
-      if (firstName && lastName && animalCategory && furColor && favoriteFood) {
-        const petName = ${furColor} ${animalCategory} of ${firstName} ${lastName}, Lover of ${favoriteFood};
-        document.getElementById('generatedName').innerText = Your pet name is: ${petName};
-      } else {
-        document.getElementById('generatedName').innerText = 'Please fill in all fields!';
-      }
-    }
-  </script>
+            // Get user inputs
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const animalCategory = document.getElementById('animal-category').value;
+            const furColor = document.getElementById('fur-color').value;
+            const favoriteFruit = document.getElementById('favorite-fruit').value;
+
+            // Array of random pet names
+            const petNames = ['Buddy', 'Charlie', 'Max', 'Bella', 'Milo', 'Luna', 'Daisy', 'Rocky', 'Chloe', 'Leo'];
+
+            // Generate a random index based on the length of the array
+            const randomIndex = Math.floor(Math.random() * petNames.length);
+
+            // Get the name at that random index
+            const randomPetName = petNames[randomIndex];
+
+            // Display the generated name
+            document.getElementById('generated-name').textContent = `Your Pet Name: ${randomPetName}`;
+        });
+
+        // Handle hovering to show the cloud animation
+        const generateBtn = document.getElementById('generate-btn');
+        const cloud = document.getElementById('cloud');
+
+        generateBtn.addEventListener('mouseenter', function() {
+            // Position the cloud relative to the button
+            const rect = generateBtn.getBoundingClientRect();
+            cloud.style.display = 'block';
+            cloud.style.left = rect.left + 'px';
+            cloud.style.top = (rect.top - 100) + 'px'; // Position above the button
+        });
+
+        generateBtn.addEventListener('mouseleave', function() {
+            // Hide the cloud when not hovering
+            cloud.style.display = 'none';
+        });
+
+        // Update the footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>

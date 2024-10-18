@@ -114,6 +114,7 @@
       <li class="center"><a href="#contributors">Contributors</a></li>
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
+      <li class="auth"><a href="./login.html">Login</a></li> <!-- Login Page Working -->
       <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
 
       <!-- Login buttons (Google and Facebook) -->
@@ -124,6 +125,11 @@
       <!-- Display logged-in user name -->
       <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+      🌙/☀️
+    </button>
   </nav>
 
   <!-- Contributors Section -->
@@ -168,42 +174,10 @@
     <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
   </footer>
 
-  <!-- Facebook Login Logic -->
+  <!-- JavaScript for Contributors and Dark Mode -->
   <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : 'YOUR_FACEBOOK_APP_ID',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v16.0'
-      });
-
-      FB.AppEvents.logPageView();   
-    };
-
-    function fbLogin() {
-      FB.login(function(response) {
-        if (response.status === 'connected') {
-          // Logged into your webpage and Facebook.
-          FB.api('/me', { fields: 'first_name' }, function(response) {
-            var firstName = response.first_name;
-
-            // Display the user's first name in the navbar
-            document.getElementById('user-name').innerHTML = `Welcome, ${firstName}`;
-            
-            // Hide the Facebook login button after successful login
-            document.querySelector('button[onclick="fbLogin()"]').style.display = 'none';
-          });
-        } else {
-          console.log('User cancelled login or did not fully authorize.');
-        }
-      });
-    }
-  </script>
-
-  <!-- Load contributors dynamically -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fetch the contributor list JSON file
       fetch('./Contributor_list.json')
         .then(response => response.json())
         .then(data => {
@@ -235,8 +209,53 @@
             contributorGrid.appendChild(contributorElement);
           });
         });
+
+      // Set year in the footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      const body = document.body;
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        darkModeToggle.textContent = isDarkMode ? '☀️  Light Mode' : '🌙  Dark Mode';
+      });
     });
-    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Facebook Login Logic -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 'YOUR_FACEBOOK_APP_ID',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v16.0'
+      });
+
+      FB.AppEvents.logPageView();   
+    };
+
+    function fbLogin() {
+      FB.login(function(response) {
+        if (response.status === 'connected') {
+          // Logged into your webpage and Facebook.
+          FB.api('/me', { fields: 'first_name' }, function(response) {
+            var firstName = response.first_name;
+
+            // Display the user's first name in the navbar
+            document.getElementById('user-name').innerHTML = `Welcome, ${firstName}`;
+            
+            // Hide the Facebook login button after successful login
+            document.querySelector('button[onclick="fbLogin()"]').style.display = 'none';
+          });
+        } else {
+          console.log('User cancelled login or did not fully authorize.');
+        }
+      });
+    }
   </script>
 </body>
 </html>
