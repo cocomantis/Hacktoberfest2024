@@ -1,3 +1,16 @@
+:root {
+  --primary-color: #007acc;
+  --secondary-color: #8E44AD;
+  --accent-color: #d60bd6;
+  --hover-color: #ef1bef;
+  --dark-background: #2c3e50;
+  --light-background: #f9f9f9;
+  --text-color: white;
+  --dark-text-color: #f0f0f0;
+  --link-hover-color: #007BFF;
+  --button-padding: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,36 +23,28 @@ body {
   background: linear-gradient(45deg, #ff007f, #ff8c00, #00ffbf, #00f7ff, #9400d3, #ff007f);
   background-size: 300% 300%;
   animation: gradientMove 10s ease infinite;
-  color: white;
+  color: var(--text-color);
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
 }
 
-
 nav {
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
 .nav-links {
   position: fixed;
-  width: 100%;
   top: 0;
-  background-color: #007acc;
-  padding: 10px 0;
-  z-index: 1000;
-}
-
-.nav-links {
+  background-color: var(--primary-color);
+  padding: 20px 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #8E44AD;
-  padding: 20px 15px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .nav-links li {
@@ -54,6 +59,7 @@ nav {
   font-weight: 500;
   padding: 6px 0;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .nav-links li a:before {
@@ -64,10 +70,7 @@ nav {
   height: 3px;
   width: 0%;
   background: linear-gradient(45deg, #ff007f, #ff8c00, #00ffbf, #00f7ff, #9400d3, #ff007f);
-  background-size: 100% 100%;
-  animation: gradientMove 1s ease infinite;
-  border-radius: 12px;
-  transition: all 0.4s ease;
+  transition: width 0.4s ease;
 }
 
 .nav-links li a:hover:before {
@@ -81,7 +84,7 @@ section {
 
 h2 {
   font-size: 36px;
-  color: white;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
@@ -95,7 +98,7 @@ h2 {
 }
 
 .contributor {
-  background-color: #8E44AD;
+  background-color: var(--secondary-color);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -115,34 +118,34 @@ h2 {
 
 .contributor a {
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
-  display: block;
 }
 
-#pet-name-form button{
+#pet-name-form button {
   height: 3rem;
-  padding: 0 1.5rem;
+  padding: var(--button-padding) 1.5rem;
   border-radius: 0.75rem;
   border: none;
-  background-color: #d60bd6;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   font-size: 1.25rem;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#pet-name-form button:hover{
-  background-color: #ef1bef;
+#pet-name-form button:hover {
+  background-color: var(--hover-color);
   outline: 1px solid purple;
 }
 
-#pet-name-form button:active{
+#pet-name-form button:active {
   background-color: rgb(240, 115, 240);
 }
 
-#generated-name{
+#generated-name {
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #c900ff;
   color: #f799f7;
@@ -151,7 +154,6 @@ h2 {
 
 /* Responsive Media Queries */
 @media (max-width: 768px) {
-  /* Navbar */
   .nav-links {
     flex-direction: column;
     padding: 10px;
@@ -161,10 +163,9 @@ h2 {
     margin: 10px 0;
   }
 
-  body{
+  body {
     padding-top: 236px;
   }
-
 
   .contributor-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -172,21 +173,17 @@ h2 {
     padding: 10px;
   }
 
-  
   section {
     padding: 50px 20px;
   }
 
-  
   h2 {
     font-size: 28px;
   }
 }
 
 @media (max-width: 480px) {
-  /* Navbar */
   .nav-links {
-    flex-direction: column;
     padding: 8px;
   }
 
@@ -194,23 +191,19 @@ h2 {
     margin: 8px 0;
   }
 
-
   .contributor-grid {
     grid-template-columns: 1fr;
     gap: 10px;
     padding: 5px;
   }
 
-  
   section {
     padding: 40px 15px;
   }
 
- 
   h2 {
     font-size: 24px;
   }
-
 
   .contributor img {
     height: 150px;
@@ -221,29 +214,25 @@ h2 {
   }
 }
 
-
-
- main
 /* Dark Mode Styles */
 body.dark-mode {
-  background: linear-gradient(45deg, #2c3e50, #34495e, #16a085, #27ae60, #2980b9);
-  background-size: 300% 300%;
-  color: #f0f0f0;
+  background: linear-gradient(45deg, var(--dark-background), #34495e, #16a085, #27ae60, #2980b9);
+  color: var(--dark-text-color);
 }
 
 body.dark-mode .contributor {
-  background-color: #2c3e50;
+  background-color: #34495e;
 }
 
 body.dark-mode nav {
-  background-color: #34495e;
+  background-color: var(--dark-background);
 }
 
 /* Dark Mode Toggle Button */
 .dark-mode-toggle {
   position: fixed;
   top: 85px;
-  z-index:auto;
+  z-index: auto;
   right: 30px;
   padding: 10px 20px;
   background-color: #101010;
@@ -261,16 +250,16 @@ body.dark-mode nav {
   transform: scale(1.1);
 }
 
-/* Other existing styles... */
-
+/* Pet Name Form */
 #pet-name-form {
   background-color: #ed6d1e;
   border-radius: 25px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 25px; 
-  margin-left: 530px;
-  max-width: 450px; 
-  width: 100%;              /* Responsive width */
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 450px;
+  width: 100%; /* Responsive width */
 }
 
 input[type="text"] {
@@ -281,7 +270,7 @@ input[type="text"] {
   border-radius: 4px;
 }
 
-
+/* General Button Styles */
 button {
   width: 100%;
   font-size: medium;
@@ -297,58 +286,14 @@ button:hover {
   background-color: #45a049;
 }
 
+/* Generated Name Styles */
 #generated-name {
   background-color: #a51eed;
   visibility: hidden;
   border-radius: 25px;
-  padding: 25px; 
-  margin-left: 530px;
-  max-width: 450px; 
-  width: 100%;  /* Responsive width */
+  padding: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 450px;
+  width: 100%; /* Responsive width */
 }
-
-
-<style>
-  /* Basic contributor grid styling */
-  .contributor-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  /* Contributor profile styling */
-  .contributor {
-    width: 200px;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
-
-  /* Animation for hovering over the profile */
-  .contributor:hover {
-    transform: translateY(-15px);  /* Float up effect */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Increase shadow to enhance floating look */
-  }
-
-  /* Contributor images */
-  .contributor img {
-    width: 100%;
-    border-radius: 50%;
-  }
-
-  .contributor a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-
-  .contributor a:hover {
-    color: #007BFF;
-  }
-</style>
- main
