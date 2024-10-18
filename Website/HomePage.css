@@ -122,6 +122,33 @@ h2 {
   display: block;
 }
 
+#pet-name-form button{
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  background-color: #d60bd6;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+#pet-name-form button:hover{
+  background-color: #ef1bef;
+  outline: 1px solid purple;
+}
+
+#pet-name-form button:active{
+  background-color: rgb(240, 115, 240);
+}
+
+#generated-name{
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #c900ff;
+  color: #f799f7;
+  font-size: 2rem;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) {
   /* Navbar */
@@ -132,6 +159,10 @@ h2 {
 
   .nav-links li {
     margin: 10px 0;
+  }
+
+  body{
+    padding-top: 236px;
   }
 
 

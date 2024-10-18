@@ -91,7 +91,11 @@
     <section id="name-your-pet">
         <h2>Generate a Random Pet Name</h2>
         <form id="pet-name-form">
-            <label for="first-name">Your First Name:</label>
+
+            <!-- <label for="first-name">Your First Name:</label>
+
+      
+
             <input type="text" id="first-name" required>
             <br><br><br>
             <label for="last-name">Your Last Name:</label>
@@ -105,11 +109,17 @@
             <br><br><br>
             <label for="favorite-fruit">Favorite Food:</label>
             <input type="text" id="favorite-fruit" required>
-            <br><br><br>
+
+            <br><br><br> -->
+        
+
+     
 
             <button type="submit" id="generate-btn">Generate Name</button>
             <div class="cloud" id="cloud"></div> <!-- Cloud element -->
+>>>
         </form>
+        
 
         <br><br><br>
         <h3 id="generated-name"></h3>
@@ -120,11 +130,12 @@
             event.preventDefault(); // Prevent the form from submitting
 
             // Get user inputs
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const animalCategory = document.getElementById('animal-category').value;
-            const furColor = document.getElementById('fur-color').value;
-            const favoriteFruit = document.getElementById('favorite-fruit').value;
+
+            // const firstName = document.getElementById('first-name').value;
+            // const lastName = document.getElementById('last-name').value;
+            // const animalCategory = document.getElementById('animal-category').value;
+            // const furColor = document.getElementById('fur-color').value;
+            // const favoriteFruit = document.getElementById('favorite-fruit').value;
 
             // Array of random pet names
             const petNames = ['Buddy', 'Charlie', 'Max', 'Bella', 'Milo', 'Luna', 'Daisy', 'Rocky', 'Chloe', 'Leo'];
