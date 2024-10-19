@@ -111,10 +111,11 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#">Dashboard</a></li>
-      <li class="center"><a href="#contributors">Contributors</a></li>
+      <li class="center"><a href="./contributors.html">Contributors</a></li>
       <li class="upward"><a href="#kittens">Kittens</a></li>
-      <li class="forward"><a href="#puppies">Puppies</a></li>
-      <li class="forward"><a href="./pet.html">Name Your Pet</a></li>
+      <li class="forward"><a href="./dogs.html">Puppies</a></li>
+      <li class="auth"><a href="./login.html">Login</a></li> <!-- Login Page Working -->
+      <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
 
       <!-- Login buttons (Google and Facebook) -->
       <li id="login-buttons">
@@ -125,19 +126,12 @@
       <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
 
-    <!-- Dark Mode Toggle
-    <button id="dark-mode-toggle" class="dark-mode-toggle">
-      🌙/☀️
-    </button> -->
+    <!-- Dark Mode Toggle -->
+    
   </nav>
+  
 
-  <!-- Contributors Section -->
-  <section id="contributors">
-    <h2>Hacktoberfest Contributors</h2>
-    <div class="contributor-grid" id="contributor-grid">
-      <!-- Contributors will be dynamically injected here by JavaScript -->
-    </div>
-  </section>
+  
 
   <!-- Kittens Section -->
   <section id="kittens">
@@ -154,75 +148,14 @@
     </div>
   </section>
 
-  <!-- Puppies Section -->
-  <section id="puppies">
-    <h2>Cute Puppies</h2>
-    <div class="contributor-grid">
-      <div class="contributor">
-        <img src="https://placedog.net/400/300" alt="Puppy">
-        <a href="https://dogs.ie/">Meet the Puppies</a>
-      </div>
-      <div class="contributor">
-        <img src="https://placedog.net/401/300" alt="Puppy">
-        <a href="https://www.dogstrust.ie/">Puppy Cuteness Overload</a>
-      </div>
-    </div>
-  </section>
+ 
 
   <footer>
     <p> &copy; <span id="year"></span> Hacktoberfest. All rights reserved.</p>
   </footer>
 
   <!-- JavaScript for Contributors and Dark Mode -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Fetch the contributor list JSON file
-      fetch('./Contributor_list.json')
-        .then(response => response.json())
-        .then(data => {
-          const contributorGrid = document.getElementById('contributor-grid');
-
-          data.forEach(contributor => {
-            const contributorElement = document.createElement('div');
-            contributorElement.className = 'contributor';
-            
-            const githubUrl = contributor.github_url;
-            const username = githubUrl.match(/https:\/\/github\.com\/([^\/]+)/)[1];
-
-            if (username) {
-              fetch(`https://api.github.com/users/${username}`)
-                .then(response => response.json())
-                .then(data => {
-                  if (data && data.avatar_url) {
-                    const avatar_img = data.avatar_url;
-                    contributorElement.innerHTML = `
-                      <img src="${avatar_img}" alt="Contributor Avatar">
-                      <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
-                      <br>
-                      <p id="action">${contributor.action}</p>
-                    `;
-                  }
-                });
-            }
-
-            contributorGrid.appendChild(contributorElement);
-          });
-        });
-
-      // Set year in the footer
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Dark Mode Toggle
-      const darkModeToggle = document.getElementById('dark-mode-toggle');
-      const body = document.body;
-
-      darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        const isDarkMode = body.classList.contains('dark-mode');
-        darkModeToggle.textContent = isDarkMode ? '☀️  Light Mode' : '🌙  Dark Mode';
-      });
-    });
-  </script>
+ 
 
   <!-- Facebook Login Logic -->
   <script>
