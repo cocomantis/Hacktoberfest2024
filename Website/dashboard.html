@@ -114,8 +114,7 @@
       <li class="center"><a href="#contributors">Contributors</a></li>
       <li class="upward"><a href="#kittens">Kittens</a></li>
       <li class="forward"><a href="#puppies">Puppies</a></li>
-      <li class="auth"><a href="./login.html">Login</a></li> <!-- Login Page Working -->
-      <li class="forward"><a href="./nameGenerator.html">Name Your Pet</a></li>
+      <li class="forward"><a href="./pet.html">Name Your Pet</a></li>
 
       <!-- Login buttons (Google and Facebook) -->
       <li id="login-buttons">
@@ -126,10 +125,10 @@
       <li id="user-name" style="float: right; margin-right: 20px;"></li>
     </ul>
 
-    <!-- Dark Mode Toggle -->
+    <!-- Dark Mode Toggle
     <button id="dark-mode-toggle" class="dark-mode-toggle">
       🌙/☀️
-    </button>
+    </button> -->
   </nav>
 
   <!-- Contributors Section -->
@@ -200,7 +199,7 @@
                       <img src="${avatar_img}" alt="Contributor Avatar">
                       <a href="${contributor.github_url}" target="_blank">${contributor.name}</a>
                       <br>
-                      <p>${contributor.action}</p>
+                      <p id="action">${contributor.action}</p>
                     `;
                   }
                 });
